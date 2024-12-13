@@ -9,10 +9,16 @@ def review(config):
         else:
             message = "Assignned não atribuído"
 
-        comments.append({
+        comment = {
             "id": "NOT_ASSIGNED",
             "comment": message
-        })
+        }
+
+        if 'processorArgs' in config:
+            comment['processorArgs'] = config['processorArgs']
+
+        comments.append(comment)
+
     else:
         author = merge['author']
         assigned_to = merge['assignee']
